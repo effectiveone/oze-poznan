@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Lato:wght@400;700&display=swap');
+
+:root {
+  --eco-dark: #1b4332;
+  --eco-mid: #2d6a4f;
+  --eco-light: #52b788;
+  --eco-pale: #d8f3dc;
+  --eco-bg: #f0faf3;
+  --text: #1a2e1f;
+  --text-muted: #4a6b52;
+  --border: #b7e4c7;
+  --white: #ffffff;
+  --accent: #74c69d;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Lato', sans-serif; background: var(--eco-bg); color: var(--text); line-height: 1.65; }
+a { color: var(--eco-mid); text-decoration: none; }
+a:hover { color: var(--eco-dark); text-decoration: underline; }
+h1, h2, h3 { font-family: 'Source Sans 3', sans-serif; font-weight: 700; color: var(--eco-dark); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }

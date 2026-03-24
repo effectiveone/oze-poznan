@@ -1,0 +1,35 @@
+---
+---
+<header class="eco-header">
+  <div class="container eco-header-inner">
+    <a href="/" class="eco-logo">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="18" fill="#1b4332"/>
+        <path d="M18 8 C10 14 10 22 18 28 C26 22 26 14 18 8Z" fill="#52b788"/>
+        <line x1="18" y1="16" x2="18" y2="30" stroke="#d8f3dc" stroke-width="2"/>
+      </svg>
+      <div>
+        <span class="eco-logo-name">OZE Poznań</span>
+        <span class="eco-logo-sub">Czysta energia dla Wielkopolski</span>
+      </div>
+    </a>
+    <nav class="eco-nav">
+      <a href="/">Główna</a>
+      <a href="/blog">Artykuły</a>
+      <a href="https://ecoaudyt.app" target="_blank" rel="noopener" class="eco-nav-btn">🌱 Audyt energetyczny</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+.eco-header { background: var(--eco-dark); position: sticky; top: 0; z-index: 100; }
+.eco-header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1.5rem; }
+.eco-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.eco-logo-name { display: block; font-family: 'Source Sans 3', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--eco-pale); }
+.eco-logo-sub { display: block; font-size: 0.68rem; color: var(--accent); letter-spacing: 0.04em; }
+.eco-nav { display: flex; gap: 1.25rem; align-items: center; }
+.eco-nav a { color: var(--eco-pale); font-size: 0.9rem; font-weight: 600; text-decoration: none; }
+.eco-nav a:hover { color: var(--eco-light); text-decoration: none; }
+.eco-nav-btn { background: var(--eco-light); color: var(--eco-dark) !important; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.82rem !important; }
+.eco-nav-btn:hover { background: var(--accent); }
+</style>

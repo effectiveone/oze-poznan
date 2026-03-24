@@ -1,0 +1,35 @@
+---
+interface Props { title: string; description: string; slug: string; pubDate: Date; tags?: string[]; }
+const { title, description, slug, pubDate, tags } = Astro.props;
+const dateStr = new Date(pubDate).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<article class="eco-card">
+  <div class="eco-card-stripe"></div>
+  <div class="eco-card-body">
+    <div class="eco-card-tags">
+      {tags?.map(t => <span class="eco-pill">{t}</span>)}
+    </div>
+    <h2><a href={`/blog/${slug}`}>{title}</a></h2>
+    <p>{description}</p>
+    <div class="eco-card-foot">
+      <time>🌿 {dateStr}</time>
+      <a href={`/blog/${slug}`} class="eco-link">Czytaj →</a>
+    </div>
+  </div>
+</article>
+<style>
+.eco-card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(27,67,50,0.08); transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+.eco-card:hover { box-shadow: 0 6px 20px rgba(27,67,50,0.15); transform: translateY(-2px); }
+.eco-card-stripe { height: 4px; background: linear-gradient(90deg, var(--eco-dark), var(--eco-light)); }
+.eco-card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+.eco-card-tags { margin-bottom: 0.5rem; }
+.eco-pill { background: var(--eco-pale); color: var(--eco-dark); font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 3px; margin-right: 0.3rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.eco-card h2 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text); }
+.eco-card h2 a { color: inherit; }
+.eco-card h2 a:hover { color: var(--eco-mid); text-decoration: none; }
+.eco-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; flex: 1; margin-bottom: 1rem; }
+.eco-card-foot { display: flex; justify-content: space-between; align-items: center; }
+time { font-size: 0.78rem; color: var(--text-muted); }
+.eco-link { background: var(--eco-mid); color: #fff; font-size: 0.8rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 4px; }
+.eco-link:hover { background: var(--eco-dark); text-decoration: none; }
+</style>

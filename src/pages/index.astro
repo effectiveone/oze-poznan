@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Layout title="OZE Poznań — Energia odnawialna w Wielkopolsce">
+  <div style="background:var(--eco-dark);color:var(--eco-pale);padding:3.5rem 0 3rem;">
+    <div class="container">
+      <p style="color:var(--eco-light);font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem;">🌱 Portal ekologiczny</p>
+      <h1 style="font-size:clamp(2rem,5vw,3.2rem);color:#fff;margin-bottom:1rem;line-height:1.15;">Odnawialne źródła energii<br/>w Poznaniu i Wielkopolsce</h1>
+      <p style="font-size:1.05rem;color:var(--accent);max-width:560px;">Fotowoltaika, pompy ciepła, biogazownie, elektromobilność. Wszystko o zielonej transformacji w naszym regionie.</p>
+    </div>
+  </div>
+  <div class="container" style="padding:2.5rem 1.5rem 3rem;">
+    {posts.length > 0 ? (
+      <>
+        <h2 style="color:var(--eco-dark);font-size:1.25rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.5rem;"><span>🌿</span> Najnowsze artykuły</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-bottom:2rem;">
+          {posts.slice(0,6).map(p => <PostCard title={p.data.title} description={p.data.description} slug={p.slug} pubDate={p.data.pubDate} tags={p.data.tags} />)}
+        </div>
+        {posts.length > 6 && <div style="text-align:center;"><a href="/blog" style="background:var(--eco-mid);color:#fff;padding:0.65rem 1.75rem;font-weight:700;border-radius:6px;display:inline-block;">Wszystkie artykuły →</a></div>}
+      </>
+    ) : (
+      <div style="text-align:center;padding:4rem 0;">
+        <div style="font-size:3rem;margin-bottom:0.75rem;">🌱</div>
+        <h2 style="color:var(--eco-dark);">Portal OZE Poznań</h2>
+        <p style="color:var(--text-muted);margin-top:0.5rem;">Artykuły o OZE w Wielkopolsce pojawią się wkrótce.</p>
+      </div>
+    )}
+  </div>
+</Layout>

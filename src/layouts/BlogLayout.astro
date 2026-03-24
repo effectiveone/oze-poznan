@@ -1,0 +1,21 @@
+---
+import Layout from './Layout.astro';
+const { frontmatter } = Astro.props;
+const dateStr = new Date(frontmatter.pubDate).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Layout title={frontmatter.title} description={frontmatter.description}>
+  <div class="container" style="padding:2.5rem 1.5rem 4rem;max-width:860px;">
+    <header style="border-left:5px solid var(--eco-light);padding:1.5rem 1.5rem;background:var(--eco-pale);border-radius:0 8px 8px 0;margin-bottom:2rem;">
+      {frontmatter.tags?.map((t: string) => <span style="background:var(--eco-dark);color:var(--eco-pale);font-size:0.68rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:3px;margin-right:0.3rem;text-transform:uppercase;">{t}</span>)}
+      <h1 style="font-size:clamp(1.6rem,4vw,2.5rem);color:var(--eco-dark);margin:0.6rem 0 0.4rem;">{frontmatter.title}</h1>
+      <p style="font-size:0.85rem;color:var(--text-muted);">🌿 {dateStr} · {frontmatter.author}</p>
+      <p style="font-size:1rem;color:var(--eco-mid);font-style:italic;margin-top:0.4rem;">{frontmatter.description}</p>
+    </header>
+    <div class="eco-prose"><slot /></div>
+  </div>
+</Layout>
+<style>
+.eco-prose :global(h2) { color:var(--eco-dark);font-size:1.45rem;margin:2rem 0 0.75rem;padding:0.5rem 0;border-bottom:2px solid var(--eco-pale); }
+.eco-prose :global(p) { margin-bottom:1.25rem;line-height:1.8; }
+.eco-prose :global(a) { color:var(--eco-mid);font-weight:600; }
+</style>
